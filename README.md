@@ -1,5 +1,10 @@
 # filmcalendar/types
 
+<p>
+  <img src="https://img.shields.io/npm/v/@filmcalendar/types">
+  <img src="https://github.com/filmcalendar/types/workflows/Build/badge.svg">
+</p>
+
 > typescript types
 
 ## Install
