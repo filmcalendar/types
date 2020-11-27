@@ -1,1 +1,2 @@
-src/**/__data__/* linguist-vendored
+src/*.d.ts linguistic-language=TypeScript
+scripts/* -linguist-vendored
