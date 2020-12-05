@@ -1,4 +1,4 @@
-name: Build
+name: Release
 on:
   push:
     branches:
@@ -15,7 +15,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - run: npm run lint
-      - run: npm run ci:test
+      - run: npm run ts-check
 
   publish-to-npm:
     needs: build

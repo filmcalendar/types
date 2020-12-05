@@ -29,8 +29,7 @@
     "typescript": "4.1.2"
   },
   "scripts": {
-    "build": "bash scripts/build.sh",
-    "ci:test": "npm run ts-check",
+    "build": "rimraf dist; mkdir dist; cp -r src/*.d.ts dist/",
     "lint": "eslint src --ext ts",
     "ts-check": "tsc --noEmit"
   },
