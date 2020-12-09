@@ -49,6 +49,9 @@ type Session = {
   link: string | BookingRequest | null;
 };
 
+type Availability = {
+  start: string;
+  end: string;
   attributes: string[];
 };
 
@@ -60,7 +63,8 @@ type Page = {
   url: string;
   provider: Provider;
   films: Film[];
-  sessions: Session[];
+  sessions?: Session[];
+  availability?: Availability;
 };
 
 type RegisterFn = () => Registration;
@@ -80,12 +84,22 @@ type Agent = {
   page: PageFn;
 };
 
+type DispatchPage = {
+  films: string[];
+  provider: string;
+  sessions?: string[];
+  availability?: string;
+  url: string;
+};
+
 type Dispatch = {
   entities: {
-    venues: Record<string, Venue>;
+    availability?: Record<string, Availability>;
     films: Record<string, Film>;
+    pages: Record<string, DispatchPage>;
     providers: Record<string, Provider>;
     sessionAttributes?: Record<string, SessionAttribute>;
+    sessions?: Record<string, Session>;
   };
   result: string[];
 };
