@@ -12,10 +12,10 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run ts-check
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --frozen-lockfile
+      - run: yarn lint
+      - run: yarn ts-check
 
   publish-to-npm:
     needs: build
@@ -29,9 +29,9 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-      - run: npm run build
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --frozen-lockfile
+      - run: yarn build build
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         env:
