@@ -9,15 +9,18 @@ type Registration = {
 
 type TempData = Record<string, unknown>;
 
-type Venue = {
-  ref?: string;
+type ProviderType = 'cinema' | 'live-tv' | 'streaming';
+
+type Provider = {
+  _data?: TempData;
   address?: string;
   chain?: string;
   email?: string;
   name: string;
   phone?: string;
-  url?: string;
-  _data?: TempData;
+  ref?: string;
+  type: ProviderType;
+  url: string;
 };
 
 type Programme = {
@@ -26,23 +29,26 @@ type Programme = {
 };
 
 type Film = {
+  cast?: string[];
+  director?: string[];
   title?: string;
   titleTranslated?: string;
-  director?: string[];
-  cast?: string[];
   year?: number;
 };
 
 type BookingRequest = {
-  url: string;
-  method: 'POST' | 'GET';
   formUrlEncoded?: Record<string, string>;
   jsonData?: Record<string, string>;
+  method: 'POST' | 'GET';
+  url: string;
 };
 
 type Session = {
+  attributes: string[];
   dateTime: string;
-  bookingLink: string | BookingRequest | null;
+  link: string | BookingRequest | null;
+};
+
   attributes: string[];
 };
 
@@ -52,24 +58,24 @@ type SessionAttribute = {
 
 type Page = {
   url: string;
-  venue: Venue;
+  provider: Provider;
   films: Film[];
   sessions: Session[];
 };
 
 type RegisterFn = () => Registration;
-type VenuesFn = () => Promise<Venue[]>;
-type ProgrammeFn = (venue: Venue) => Promise<Programme>;
+type ProvidersFn = () => Promise<Provider[]>;
+type ProgrammeFn = (provider: Provider) => Promise<Programme>;
 type PageFn = (
   url: string,
-  venue: Venue,
+  provider: Provider,
   tempData?: TempData
 ) => Promise<Page | null>;
 
 type Agent = {
   ref: string;
   register: RegisterFn;
-  venues: VenuesFn;
+  providers: ProvidersFn;
   programme: ProgrammeFn;
   page: PageFn;
 };
@@ -78,9 +84,8 @@ type Dispatch = {
   entities: {
     venues: Record<string, Venue>;
     films: Record<string, Film>;
-    pages: Record<string, Page>;
-    sessions: Record<string, Session>;
-    sessionAttributes: Record<string, SessionAttribute>;
+    providers: Record<string, Provider>;
+    sessionAttributes?: Record<string, SessionAttribute>;
   };
   result: string[];
 };
