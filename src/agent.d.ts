@@ -7,12 +7,10 @@ type Registration = {
   language: Language;
 };
 
-type TempData = Record<string, unknown>;
-
 type ProviderType = 'cinema' | 'live-tv' | 'streaming';
 
 type Provider = {
-  _data?: TempData;
+  _data?: unknown;
   address?: string;
   chain?: string;
   email?: string;
@@ -25,7 +23,7 @@ type Provider = {
 
 type Programme = {
   programme: string[];
-  _data?: TempData;
+  _data?: unknown;
 };
 
 type Film = {
@@ -60,35 +58,38 @@ type SessionAttribute = {
 };
 
 type Page = {
-  url: string;
-  provider: Provider;
-  films: Film[];
-  sessions?: Session[];
   availability?: Availability;
+  films: Film[];
+  provider: Provider;
+  sessions?: Session[];
+  url: string;
 };
 
 type RegisterFn = () => Registration;
 type ProvidersFn = () => Promise<Provider[]>;
 type ProgrammeFn = (provider: Provider) => Promise<Programme>;
+type FeaturedFn = (provider: Provider) => Promise<string[]>;
 type PageFn = (
   url: string,
   provider: Provider,
-  tempData?: TempData
+  _data?: unknown
 ) => Promise<Page | null>;
 
 type Agent = {
+  featured: FeaturedFn;
+  page: PageFn;
+  programme: ProgrammeFn;
+  providers: ProvidersFn;
   ref: string;
   register: RegisterFn;
-  providers: ProvidersFn;
-  programme: ProgrammeFn;
-  page: PageFn;
 };
 
 type DispatchPage = {
+  availability?: string;
   films: string[];
+  isFeatured: boolean;
   provider: string;
   sessions?: string[];
-  availability?: string;
   url: string;
 };
 
