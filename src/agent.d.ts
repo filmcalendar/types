@@ -26,6 +26,18 @@ type Programme = {
   _data?: unknown;
 };
 
+type Collection = {
+  url: string;
+  name: string;
+  description?: string;
+  programme: string[];
+};
+
+type Collections = {
+  collections: string[];
+  _data?: unknown;
+};
+
 type Film = {
   cast?: string[];
   director?: string[];
@@ -59,6 +71,7 @@ type SessionAttribute = {
 
 type Page = {
   availability?: Availability;
+  collections?: Collection[];
   films: Film[];
   provider: Provider;
   sessions?: Session[];
@@ -67,8 +80,17 @@ type Page = {
 
 type RegisterFn = () => Registration;
 type ProvidersFn = () => Promise<Provider[]>;
-type ProgrammeFn = (provider: Provider) => Promise<Programme>;
 type FeaturedFn = (provider: Provider) => Promise<string[]>;
+type ProgrammeFn = (provider: Provider) => Promise<Programme>;
+
+type CollectionsFn = (provider: Provider) => Promise<Collections>;
+
+type CollectionOptions = { _data: unknown };
+type CollectionFn = (
+  url: string,
+  options?: CollectionOptions
+) => Promise<Collection>;
+
 type PageFn = (
   url: string,
   provider: Provider,
@@ -76,7 +98,9 @@ type PageFn = (
 ) => Promise<Page | null>;
 
 type Agent = {
-  featured: FeaturedFn;
+  collection?: CollectionFn;
+  collections?: CollectionsFn;
+  featured?: FeaturedFn;
   page: PageFn;
   programme: ProgrammeFn;
   providers: ProvidersFn;
@@ -86,6 +110,7 @@ type Agent = {
 
 type DispatchPage = {
   availability?: string;
+  collections?: string[];
   films: string[];
   isFeatured: boolean;
   provider: string;
