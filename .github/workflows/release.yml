@@ -15,7 +15,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
       - run: yarn --frozen-lockfile
       - run: yarn lint
-      - run: yarn ts-check
+      - run: yarn test
 
   publish-to-npm:
     needs: test
