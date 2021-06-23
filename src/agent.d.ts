@@ -118,6 +118,14 @@ type DispatchPage = {
   url: string;
 };
 
+type DispatchCollection = {
+  description?: string;
+  image?: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
 type Dispatch = {
   entities: {
     availability?: Record<string, Availability>;
@@ -126,6 +134,7 @@ type Dispatch = {
     providers: Record<string, Provider>;
     sessionAttributes?: Record<string, SessionAttribute>;
     sessions?: Record<string, Session>;
+    collections?: Record<string, DispatchCollection>;
   };
   result: string[];
 };
