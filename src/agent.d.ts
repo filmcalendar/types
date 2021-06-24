@@ -5,6 +5,7 @@ import type {
   Film,
   Language,
   Provider,
+  Season,
   Session,
 } from './common';
 
@@ -20,21 +21,14 @@ type Programme = {
   _data?: unknown;
 };
 
-type Collection = {
-  url: string;
-  name: string;
-  description?: string;
-  programme: string[];
-};
-
-type Collections = {
-  collections: string[];
+type SeasonsData = {
+  seasonUrls: string[];
   _data?: unknown;
 };
 
 type Page = {
   availability?: Availability;
-  collections?: Collection[];
+  seasons?: Season[];
   films: Film[];
   provider: Provider;
   sessions?: Session[];
@@ -47,12 +41,9 @@ type ProvidersFn = () => Promise<Provider[]>;
 type FeaturedFn = (provider: Provider) => Promise<string[]>;
 type ProgrammeFn = (provider: Provider) => Promise<Programme>;
 
-type CollectionsFn = (provider: Provider) => Promise<Collections>;
-type CollectionOptions = { _data: unknown };
-type CollectionFn = (
-  url: string,
-  options?: CollectionOptions
-) => Promise<Collection>;
+type SeasonsFn = (provider: Provider) => Promise<SeasonsData>;
+type SeasonOptions = { _data: unknown };
+type SeasonFn = (url: string, options?: SeasonOptions) => Promise<Season>;
 
 type PageFn = (
   url: string,
@@ -61,8 +52,8 @@ type PageFn = (
 ) => Promise<Page | null>;
 
 type Agent = {
-  collection?: CollectionFn;
-  collections?: CollectionsFn;
+  season?: SeasonFn;
+  seasons?: SeasonsFn;
   featured?: FeaturedFn;
   page: PageFn;
   programme: ProgrammeFn;

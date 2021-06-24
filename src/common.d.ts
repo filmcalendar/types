@@ -4,6 +4,8 @@ export type Language = 'en-GB';
 
 export type AgentType = 'films' | 'reviews' | 'age-ratings';
 
+type ProviderType = 'cinema' | 'live-tv' | 'streaming';
+
 export type Availability = {
   start: string;
   end: string;
@@ -17,8 +19,6 @@ type Film = {
   titleTranslated?: string;
   year?: number;
 };
-
-type ProviderType = 'cinema' | 'live-tv' | 'streaming';
 
 type Provider = {
   _data?: unknown;
@@ -45,6 +45,11 @@ type Session = {
   link: string | BookingRequest | null;
 };
 
-type SessionAttribute = {
-  tag: string;
+type Season = {
+  description?: string;
+  image?: string;
+  name: string;
+  programme?: string[];
+  ref?: string;
+  url: string;
 };

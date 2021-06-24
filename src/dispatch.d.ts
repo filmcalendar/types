@@ -1,26 +1,16 @@
-import type {
-  Availability,
-  Film,
-  Provider,
-  Session,
-  SessionAttribute,
-} from './common.d';
+import type { Availability, Film, Provider, Season, Session } from './common.d';
 
-type DispatchPage = {
+type SessionAttribute = {
+  tag: string;
+};
+
+type Page = {
   availability?: string;
-  collections?: string[];
   films: string[];
   isFeatured: boolean;
   provider: string;
+  seasons?: string[];
   sessions?: string[];
-  url: string;
-};
-
-type DispatchCollection = {
-  description?: string;
-  image?: string;
-  name: string;
-  ref: string;
   url: string;
 };
 
@@ -28,11 +18,11 @@ type Dispatch = {
   entities: {
     availability?: Record<string, Availability>;
     films: Record<string, Film>;
-    pages: Record<string, DispatchPage>;
+    pages: Record<string, Page>;
     providers: Record<string, Provider>;
     sessionAttributes?: Record<string, SessionAttribute>;
     sessions?: Record<string, Session>;
-    collections?: Record<string, DispatchCollection>;
+    seasons?: Record<string, Season>;
   };
   result: string[];
 };
