@@ -9,7 +9,7 @@ export type ProviderType = 'cinema' | 'live-tv' | 'streaming';
 interface Availability {
   start: string;
   end: string;
-  attributes: string[];
+  tags: string[];
 }
 
 interface Film {
@@ -40,7 +40,7 @@ interface BookingRequest {
 }
 
 interface Session {
-  attributes: string[];
+  tags: string[];
   dateTime: string;
   link: string | BookingRequest | null;
 }
@@ -54,6 +54,6 @@ interface Season {
   url: string;
 }
 
-interface SessionAttribute {
+interface Tag {
   tag: string;
 }

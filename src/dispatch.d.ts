@@ -4,7 +4,7 @@ import type {
   Provider,
   Season,
   Session,
-  SessionAttribute,
+  Tag,
 } from './common.d';
 
 interface Page {
@@ -23,7 +23,7 @@ interface Dispatch {
     films: Record<string, Film>;
     pages: Record<string, Page>;
     providers: Record<string, Provider>;
-    sessionAttributes?: Record<string, SessionAttribute>;
+    tags?: Record<string, Tag>;
     sessions?: Record<string, Session>;
     seasons?: Record<string, Season>;
   };
