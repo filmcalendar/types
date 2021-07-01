@@ -9,31 +9,31 @@ import type {
   Session,
 } from './common';
 
-type Registration = {
+interface Registration {
   agent: string;
   country: Country;
   type: AgentType;
   language: Language;
-};
+}
 
-type Programme = {
+interface Programme {
   programme: string[];
   _data?: unknown;
-};
+}
 
-type SeasonsData = {
+interface SeasonsData {
   seasonUrls: string[];
   _data?: unknown;
-};
+}
 
-type Page = {
+interface Page {
   availability?: Availability;
   seasons?: Season[];
   films: Film[];
   provider: Provider;
   sessions?: Session[];
   url: string;
-};
+}
 
 type RegisterFn = () => Registration;
 
@@ -51,7 +51,7 @@ type PageFn = (
   _data?: unknown
 ) => Promise<Page | null>;
 
-type Agent = {
+interface Agent {
   season?: SeasonFn;
   seasons?: SeasonsFn;
   featured?: FeaturedFn;
@@ -60,4 +60,4 @@ type Agent = {
   providers: ProvidersFn;
   ref: string;
   register: RegisterFn;
-};
+}

@@ -4,23 +4,23 @@ export type Language = 'en-GB';
 
 export type AgentType = 'films' | 'reviews' | 'age-ratings';
 
-type ProviderType = 'cinema' | 'live-tv' | 'streaming';
+export type ProviderType = 'cinema' | 'live-tv' | 'streaming';
 
-export type Availability = {
+interface Availability {
   start: string;
   end: string;
   attributes: string[];
-};
+}
 
-type Film = {
+interface Film {
   cast?: string[];
   director?: string[];
   title?: string;
   titleTranslated?: string;
   year?: number;
-};
+}
 
-type Provider = {
+interface Provider {
   _data?: unknown;
   address?: string;
   chain?: string;
@@ -30,26 +30,30 @@ type Provider = {
   ref?: string;
   type: ProviderType;
   url: string;
-};
+}
 
-type BookingRequest = {
+interface BookingRequest {
   formUrlEncoded?: Record<string, string>;
   jsonData?: Record<string, string>;
   method: 'POST' | 'GET';
   url: string;
-};
+}
 
-type Session = {
+interface Session {
   attributes: string[];
   dateTime: string;
   link: string | BookingRequest | null;
-};
+}
 
-type Season = {
+interface Season {
   description?: string;
   image?: string;
   name: string;
   programme?: string[];
   ref?: string;
   url: string;
-};
+}
+
+interface SessionAttribute {
+  tag: string;
+}

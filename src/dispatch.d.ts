@@ -1,10 +1,13 @@
-import type { Availability, Film, Provider, Season, Session } from './common.d';
+import type {
+  Availability,
+  Film,
+  Provider,
+  Season,
+  Session,
+  SessionAttribute,
+} from './common.d';
 
-type SessionAttribute = {
-  tag: string;
-};
-
-type Page = {
+interface Page {
   availability?: string;
   films: string[];
   isFeatured: boolean;
@@ -12,9 +15,9 @@ type Page = {
   seasons?: string[];
   sessions?: string[];
   url: string;
-};
+}
 
-type Dispatch = {
+interface Dispatch {
   entities: {
     availability?: Record<string, Availability>;
     films: Record<string, Film>;
@@ -25,4 +28,4 @@ type Dispatch = {
     seasons?: Record<string, Season>;
   };
   result: string[];
-};
+}
