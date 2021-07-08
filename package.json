@@ -9,7 +9,6 @@
   "files": [
     "dist/*.d.ts"
   ],
-  "type": "module",
   "types": "dist/index.d.ts",
   "dependencies": {},
   "devDependencies": {
