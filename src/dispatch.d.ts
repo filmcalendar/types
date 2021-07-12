@@ -27,14 +27,11 @@ interface Metadata {
 
 interface Dispatch {
   metadata?: Metadata;
-  entities: {
-    availability?: Record<string, Availability>;
-    films: Record<string, Film>;
-    pages: Record<string, Page>;
-    providers: Record<string, Provider>;
-    tags?: Record<string, Tag>;
-    sessions?: Record<string, Session>;
-    seasons?: Record<string, Season>;
-  };
-  result: string[];
+  availability?: Record<string, Availability>;
+  films: Record<string, Film>;
+  pages: Record<string, Page>;
+  providers: Record<string, Provider>;
+  tags?: Record<string, Tag>;
+  sessions?: Record<string, Session>;
+  seasons?: Record<string, Season>;
 }
