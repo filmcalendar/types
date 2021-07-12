@@ -17,7 +17,16 @@ interface Page {
   url: string;
 }
 
+interface Metadata {
+  agent: string;
+  memoryUsage: number;
+  timeEnd: number;
+  timeStart: number;
+  valid: boolean;
+}
+
 interface Dispatch {
+  metadata?: Metadata;
   entities: {
     availability?: Record<string, Availability>;
     films: Record<string, Film>;
