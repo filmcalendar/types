@@ -51,7 +51,7 @@ interface Season {
   name: string;
   programme?: string[];
   ref?: string;
-  url: string;
+  url?: string;
 }
 
 interface Tag {

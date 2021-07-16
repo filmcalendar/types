@@ -28,7 +28,7 @@ interface SeasonsData {
 
 interface Page {
   availability?: Availability;
-  seasons?: Season[];
+  seasons?: string[] | Season[];
   films: Film[];
   provider: Provider;
   sessions?: Session[];
