@@ -12,18 +12,18 @@
   "types": "dist/index.d.ts",
   "dependencies": {},
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "4.28.0",
-    "@typescript-eslint/parser": "4.28.0",
-    "eslint": "7.29.0",
+    "@typescript-eslint/eslint-plugin": "4.28.3",
+    "@typescript-eslint/parser": "4.28.3",
+    "eslint": "7.31.0",
     "eslint-config-airbnb-typescript": "12.3.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.23.4",
-    "prettier": "2.3.1",
+    "prettier": "2.3.2",
     "rimraf": "3.0.2",
-    "typescript": "4.3.4"
+    "typescript": "4.3.5"
   },
   "scripts": {
-    "build": "bash ./scripts/build.sh",
+    "build": "bash sh/build.sh",
     "lint": "eslint src --ext ts",
     "test": "tsc --noEmit"
   },
